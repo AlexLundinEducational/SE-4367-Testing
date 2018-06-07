@@ -15,7 +15,7 @@ This allows working to have any in between developement work
 
 
 Folder Use:
-This folder is designed to hold all shared project files
+This folder is designed to hold ONLY NECESSARY project file
 Keep each project in it's own folder
 Document any and all steps needed to use each project
 Document all third party software needed to use each project
@@ -27,3 +27,10 @@ Make sure workspace is useable
 
 Keep large files out of the folder including:
 	Installation executables
+	Workspace files
+	
+Tomcat Link
+https://tomcat.apache.org/download-70.cgi
+	
+	Core
+		64-bit Windows zip (pgp, sha1, sha512)
