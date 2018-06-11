@@ -1,9 +1,18 @@
 Phase 1 Development
+
 	06-09-2018
 		Initial Webex Meeting
 		https://www.tutorialspoint.com/java_xml/java_sax_modify_document.htm
 		
+	06-08-2018
+		GUI Started
+		
 Phase 2 Development
 	06-10-2018
-	Working on the XML writer to write directly to fact.xml. Currently have code writting to new XML file.
+		Working on the XML writer to write directly to fact.xml. Currently have code writting to new XML file.
+	
+	06-11-2018
+		Posted functional GUI, data ready for XMLwritter
+		https://autode.sk/2l1kJV2
+		
 Phase 3 Development

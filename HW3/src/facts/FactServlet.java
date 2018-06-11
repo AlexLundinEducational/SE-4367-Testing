@@ -18,17 +18,16 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet("/FactServlet")
 
-public class FactServlet extends HttpServlet {
+public class FactServlet extends HttpServlet implements StringConstants {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	// Alex's locations for UT Dallas machine
-	private static final String jsFile = "C:\\Users\\aml140830\\Desktop\\Java\\JavaEEWorkspace\\Test\\src\\facts\\facts.js";
-	private static final String xmlFile = "C:\\Users\\aml140830\\Desktop\\Java\\JavaEEWorkspace\\Test\\WebContent\\WEB-INF\\facts.xml";
+
 	private static final String thisServlet = "http://localhost:8080/Test/";
+	
 	
 	private FactList list;
 
@@ -91,6 +90,16 @@ public class FactServlet extends HttpServlet {
 		printBody(out);
 		printSearch(out, searchText, searchMode);
 		printSearcheHistory(out, searchList, searchContextList);
+		
+		// addition for HW2, addFact 
+		// use requests to pull strings out of the form based on their parameter name
+		String quoteText  = request.getParameter("quoteText");
+		String authorText  = request.getParameter("authorText");
+		String typeText  = request.getParameter("typeText");
+		// call addFact method, which decides if fact needs to be added
+		addFact(out, quoteText, authorText, typeText);
+		
+		// continue control flow as normal
 		printFooter(out);
 	}
 
@@ -164,14 +173,48 @@ public class FactServlet extends HttpServlet {
 		out.println("      </td>");
 		out.println("    </tr>");
 		
+		// HW3 additions
+		// Add on to the table
+		
 		out.println("    <tr>");
-		out.println("      <th>Add :</th>");
+		out.println("      <th>New Fact :</th>");
 		out.println("      <td>");
-		out.println("        <input type=\"text\" id=\"addText\" name=\"addText\" value=\"\" size=\"50\" />");
+		out.println("        <input type=\"text\" id=\"addText\" name=\"addText\" value=\"\" size=\"45\" />");
 		out.println("      </td>");
 		out.println("    </tr>");
-		out.println("  </table>");
 		
+		// quote field
+		out.println("    <tr>");
+		out.println("      <th>Quote :</th>");
+		out.println("      <td>");
+		out.println("        <input type=\"text\" id=\"quoteText\" name=\"quoteText\" value=\"\" size=\"45\" />");
+		out.println("      </td>");
+		out.println("    </tr>");
+		
+		// author field
+		out.println("    <tr>");
+		out.println("      <th>Author :</th>");
+		out.println("      <td>");
+		out.println("        <input type=\"text\" id=\"authorText\" name=\"authorText\" value=\"\" size=\"45\" />");
+		out.println("      </td>");
+		out.println("    </tr>");
+		
+		out.println("    <tr>");
+		out.println("      <th>Type :</th>");
+		out.println("      <td>");
+		out.println("        <input type=\"text\" id=\"quoteText\" name=\"typeText\" value=\"\" size=\"45\" />");
+		out.println("      </td>");
+		out.println("    </tr>");
+		
+		// Add fact button which is below the text fields in the table
+		out.println("    <tr>");
+		out.println("      <th></th>");
+		out.println("      <td align=\"center\">");
+		out.println("        <input type=\"submit\" value=\"Add fact\" name=\"addFact\"/>");
+		out.println("      </td>");
+		out.println("    </tr>");
+		
+		out.println("  </table>");
 		out.println("</form>");
 
 	}
@@ -182,7 +225,25 @@ public class FactServlet extends HttpServlet {
 		out.println("</html>");
 	}
 
-
+	// HW3 addition, this method will control the XML writer
+	// the strings are passed in from the form
+	private void addFact(PrintWriter out, String quoteText, String authorText, String typeText ) {
+		Fact tempFact = new Fact(authorText, typeText, quoteText);
+		
+		// if all strings exist
+		if(quoteText != null && authorText != null && typeText != null){
+			
+			tempFact.toString();
+			// print line on the web page
+			out.println("<p>Fact add! </p>");
+			System.out.println("Fact ready for XML writer.");
+			
+		}else{
+			// else don't print line
+			out.println("<p></p>");
+		}
+	}
+	
 	private void printSearch(PrintWriter out, String searchText, String searchMode) {
 		if (searchText != null && !searchText.equals("")){  // Received a search request
 			int searchModeVal = FactSearchMode.ALL_VAL; // Default
@@ -213,6 +274,7 @@ public class FactServlet extends HttpServlet {
 		}
 
 	}
+
 
 
 	private void printSearcheHistory(PrintWriter out, ArrayList<String> searchList, ArrayList<String> searchContextList) {
