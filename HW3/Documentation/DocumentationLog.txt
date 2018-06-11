@@ -3,5 +3,8 @@ Documentation Log
 Refactors
 
 Additions
+  06-10-2018
+    Source: XMLwriter
+      Description: Program takes the fields defined in facts.java file (text,author,type) and writes it to an XML file
 
 Reductions
