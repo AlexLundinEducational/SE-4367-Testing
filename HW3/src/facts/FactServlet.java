@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.xml.stream.XMLStreamException;
 
 
 /**
@@ -24,8 +27,8 @@ public class FactServlet extends HttpServlet implements StringConstants {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private XMLwriter myXMLWriter  = new XMLwriter();	
 	
-
 	private static final String thisServlet = "http://localhost:8080/Test/";
 	
 	
@@ -91,13 +94,21 @@ public class FactServlet extends HttpServlet implements StringConstants {
 		printSearch(out, searchText, searchMode);
 		printSearcheHistory(out, searchList, searchContextList);
 		
-		// addition for HW2, addFact 
+		// HW3 addition
 		// use requests to pull strings out of the form based on their parameter name
 		String quoteText  = request.getParameter("quoteText");
 		String authorText  = request.getParameter("authorText");
 		String typeText  = request.getParameter("typeText");
+
+		
+
+		try {
 		// call addFact method, which decides if fact needs to be added
 		addFact(out, quoteText, authorText, typeText);
+		} catch (XMLStreamException e) {
+		System.out.println("FactServlet encountered Error when adding fact to XML file.");	
+		e.printStackTrace();
+		}
 		
 		// continue control flow as normal
 		printFooter(out);
@@ -227,7 +238,7 @@ public class FactServlet extends HttpServlet implements StringConstants {
 
 	// HW3 addition, this method will control the XML writer
 	// the strings are passed in from the form
-	private void addFact(PrintWriter out, String quoteText, String authorText, String typeText ) {
+	private void addFact(PrintWriter out, String quoteText, String authorText, String typeText ) throws IOException, XMLStreamException {
 		Fact tempFact = new Fact(authorText, typeText, quoteText);
 		
 		// if all strings exist
@@ -235,8 +246,12 @@ public class FactServlet extends HttpServlet implements StringConstants {
 			
 			tempFact.toString();
 			// print line on the web page
-			out.println("<p>Fact add! </p>");
-			System.out.println("Fact ready for XML writer.");
+			out.println("<p>Fact data found! </p>");
+			System.out.println("Fact created for XML writer.");
+			FactList tempFactList = new FactList();
+			tempFactList.set(tempFact);
+			myXMLWriter.writeToXml(tempFactList);
+
 			
 		}else{
 			// else don't print line
