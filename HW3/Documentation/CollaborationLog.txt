@@ -31,3 +31,14 @@ Phase 3 Development
 		
 		Meshed my GUI to use my reworked version of whatever Ali posted (5 mins)
 		https://autode.sk/2t0NCo2
+
+	06-12-2018
+		Ali
+		wrote a new class for writing xml file xmlWritterJDOM.java 
+		
+		Alex
+		Documented install steps for Ali's code, JDOM
+		Wrote comments for method Ali can use to send factList to xmlWritterJDOM.
+		Tested and verified webpage still runs with Ali's new method		
+
+		https://autode.sk/2t3ii8g

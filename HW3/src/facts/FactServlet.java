@@ -29,7 +29,6 @@ public class FactServlet extends HttpServlet implements StringConstants {
 	private static final long serialVersionUID = 1L;
 	private XMLwriter myXMLWriter  = new XMLwriter();	
 	
-	private static final String thisServlet = "http://localhost:8080/Test/";
 	
 	
 	private FactList list;
