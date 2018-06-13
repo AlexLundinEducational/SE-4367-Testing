@@ -49,3 +49,10 @@ Phase 3 Development
 		Incorrect method calls
 		I even left design notes inside his xmlWritterJDOM.java for how to mesh
 		https://autode.sk/2l7H5o0
+		
+	06-13-2018
+		Stayed up until 1AM to go back to the first design
+		JDOM does not function correctly with tomcat, suprise
+		
+
+		

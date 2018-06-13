@@ -28,9 +28,6 @@ public class FactServlet extends HttpServlet implements StringConstants {
 	 */
 	private static final long serialVersionUID = 1L;
 	private XMLwriter myXMLWriter  = new XMLwriter();
-	//private xmlWriterJDOM myXMLWriter = new xmlWriterJDOM();
-	
-	
 	
 	private FactList list;
 
@@ -257,7 +254,7 @@ public class FactServlet extends HttpServlet implements StringConstants {
 			// I left him very clear instructions IN THE TOP OF HIS JAVA FILE
 			// We are going to look at my comments now to see how easy I'm making the mesh for him
 			myXMLWriter.writeToXml(tempFactList);
-
+			//myXMLWriter.factListWriteIterator(tempFactList);	
 			
 		}else{
 			// else don't print line
