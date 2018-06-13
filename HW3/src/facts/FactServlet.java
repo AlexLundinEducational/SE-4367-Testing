@@ -21,6 +21,16 @@ import javax.xml.stream.XMLStreamException;
  */
 @WebServlet("/FactServlet")
 
+//Alex Lundin
+//06-13-2018
+//SE-4367-Testing
+
+// Alex modified this class file
+// search for this comment tag to find changes
+// HW3
+// search for this comment tag to find mesh point of control flow
+// mesh point
+
 public class FactServlet extends HttpServlet implements StringConstants {
 
 	/**
@@ -29,12 +39,17 @@ public class FactServlet extends HttpServlet implements StringConstants {
 	private static final long serialVersionUID = 1L;
 	private XMLwriter myXMLWriter  = new XMLwriter();
 	
+	
+	
+	//HW 3
+	// pulled up parser and factList attributes
+	// to ensure control flow can update list
 	private FactList list;
-
+	Parser parser = new Parser(xmlFile);
+	
 	@Override
 	public void init() throws ServletException{
 		super.init();
-		Parser parser = new Parser(xmlFile);
 		list = parser.getFactList();
 	}
 
@@ -88,8 +103,10 @@ public class FactServlet extends HttpServlet implements StringConstants {
 		PrintWriter out = response.getWriter();
 		printHeader(out);
 		printBody(out);
-		printSearch(out, searchText, searchMode);
-		printSearcheHistory(out, searchList, searchContextList);
+		
+		// HW3 reduction
+//		printSearch(out, searchText, searchMode);
+//		printSearcheHistory(out, searchList, searchContextList);
 		
 		// HW3 addition
 		// use requests to pull strings out of the form based on their parameter name
@@ -98,10 +115,11 @@ public class FactServlet extends HttpServlet implements StringConstants {
 		String typeText  = request.getParameter("typeText");
 
 		
-
+		// HW3 addition
+		// pass control to addFact method
 		try {
 		// call addFact method, which decides if fact needs to be added
-		addFact(out, quoteText, authorText, typeText);
+		addFact(out, authorText, typeText, quoteText);
 		} catch (XMLStreamException e) {
 		System.out.println("FactServlet encountered Error when adding fact to XML file.");	
 		e.printStackTrace();
@@ -109,6 +127,12 @@ public class FactServlet extends HttpServlet implements StringConstants {
 		
 		// continue control flow as normal
 		printFooter(out);
+		
+		// HW3 addition
+		// update list and end of web page requests
+		parser = new Parser(xmlFile);
+		list = parser.getFactList();
+		
 	}
 
 	private void printHeader(PrintWriter out) {
@@ -151,46 +175,49 @@ public class FactServlet extends HttpServlet implements StringConstants {
 		out.println("<form name=\"FactServlet\" method=\"post\" action=\"" + thisServlet + "\" >");
 		out.println("  <table>");
 
-		out.println("    <tr>");
-		out.println("      <th>Search :</th>");
-		out.println("      <td>");
-		out.println("        <input type=\"text\" id=\"searchText\" name=\"searchText\" value=\"\" size=\"50\" />");
-		out.println("      </td>");
-		out.println("    </tr>");
-
-		out.println("    <tr>");
-		out.println("      <th>Mode :</th>");
-		out.println("      <td>");
-		out.println("        <input type=\"radio\" id=\"text\"  name=\"searchMode\" value=\"text\"/>");
-		out.println("        <label for=\"text\">text</label>");
-		out.println("        <input type=\"radio\" id=\"author\" name=\"searchMode\" value=\"author\"/>");
-		out.println("        <label for=\"author\">author</label>");
-		out.println("        <input type=\"radio\" id=\"type\" name=\"searchMode\" value=\"type\"/>");
-		out.println("        <label for=\"type\">type</label>");		   
-		out.println("        <input type=\"radio\" id=\"all\"   name=\"searchMode\" value=\"all\" checked=\"checked\"/>");
-		out.println("        <label for=\"all\">all</label>");
-
-		out.println("      </td>");
-		out.println("    </tr>");
-
-		out.println("    <tr>");
-		out.println("      <th></th>");
-		out.println("      <td align=\"center\">");
-		out.println("        <input type=\"submit\" value=\"search\" name=\"submit\"/>");
-		out.println("        <input type=\"reset\"  value=\"reset\"  name=\"reset\"/>");
-		out.println("      </td>");
-		out.println("    </tr>");
+		// HW3 reduction
+//		out.println("    <tr>");
+//		out.println("      <th>Search :</th>");
+//		out.println("      <td>");
+//		out.println("        <input type=\"text\" id=\"searchText\" name=\"searchText\" value=\"\" size=\"50\" />");
+//		out.println("      </td>");
+//		out.println("    </tr>");
+//
+//		out.println("    <tr>");
+//		out.println("      <th>Mode :</th>");
+//		out.println("      <td>");
+//		out.println("        <input type=\"radio\" id=\"text\"  name=\"searchMode\" value=\"text\"/>");
+//		out.println("        <label for=\"text\">text</label>");
+//		out.println("        <input type=\"radio\" id=\"author\" name=\"searchMode\" value=\"author\"/>");
+//		out.println("        <label for=\"author\">author</label>");
+//		out.println("        <input type=\"radio\" id=\"type\" name=\"searchMode\" value=\"type\"/>");
+//		out.println("        <label for=\"type\">type</label>");		   
+//		out.println("        <input type=\"radio\" id=\"all\"   name=\"searchMode\" value=\"all\" checked=\"checked\"/>");
+//		out.println("        <label for=\"all\">all</label>");
+//
+//		out.println("      </td>");
+//		out.println("    </tr>");
+//
+//
+//		out.println("    <tr>");
+//		out.println("      <th></th>");
+//		out.println("      <td align=\"center\">");
+//		out.println("        <input type=\"submit\" value=\"search\" name=\"submit\"/>");
+//		out.println("        <input type=\"reset\"  value=\"reset\"  name=\"reset\"/>");
+//		out.println("      </td>");
+//		out.println("    </tr>");
 		
-		// HW3 additions
+		// HW3 addition
 		// Add on to the table
 		
-		out.println("    <tr>");
-		out.println("      <th>New Fact :</th>");
-		out.println("      <td>");
-		out.println("        <input type=\"text\" id=\"addText\" name=\"addText\" value=\"\" size=\"45\" />");
-		out.println("      </td>");
-		out.println("    </tr>");
+//		out.println("    <tr>");
+//		out.println("      <th>New Fact :</th>");
+//		out.println("      <td>");
+//		out.println("        <input type=\"text\" id=\"addText\" name=\"addText\" value=\"\" />");
+//		out.println("      </td>");
+//		out.println("    </tr>");
 		
+		// HW3 addition
 		// quote field
 		out.println("    <tr>");
 		out.println("      <th>Quote :</th>");
@@ -199,6 +226,7 @@ public class FactServlet extends HttpServlet implements StringConstants {
 		out.println("      </td>");
 		out.println("    </tr>");
 		
+		// HW3 addition
 		// author field
 		out.println("    <tr>");
 		out.println("      <th>Author :</th>");
@@ -207,13 +235,16 @@ public class FactServlet extends HttpServlet implements StringConstants {
 		out.println("      </td>");
 		out.println("    </tr>");
 		
+		// HW3 addition
+		// quote field
 		out.println("    <tr>");
 		out.println("      <th>Type :</th>");
 		out.println("      <td>");
-		out.println("        <input type=\"text\" id=\"quoteText\" name=\"typeText\" value=\"\" size=\"45\" />");
+		out.println("        <input type=\"text\" id=\"typeText\" name=\"typeText\" value=\"\" size=\"45\" />");
 		out.println("      </td>");
 		out.println("    </tr>");
 		
+		// HW3 addition
 		// Add fact button which is below the text fields in the table
 		out.println("    <tr>");
 		out.println("      <th></th>");
@@ -233,102 +264,117 @@ public class FactServlet extends HttpServlet implements StringConstants {
 		out.println("</html>");
 	}
 
-	// HW3 addition, this method will control the XML writer
+	// HW3 addition
+	// mesh point
+	// this method will control the XML writer
 	// the strings are passed in from the form
-	private void addFact(PrintWriter out, String quoteText, String authorText, String typeText ) throws IOException, XMLStreamException {
-		Fact tempFact = new Fact(authorText, typeText, quoteText);
+	private void addFact(PrintWriter out, String authorText, String typeText, String quoteText ) throws IOException, XMLStreamException {
+
+		int errorCode = 0;
 		
 		// if all strings exist
-		if(quoteText != null && authorText != null && typeText != null){
-			
-			tempFact.toString();
-			// print line on the web page
-			out.println("<p>Fact data found! </p>");
-			System.out.println("Fact created for XML writer.");
-			FactList tempFactList = new FactList();
-			tempFactList.set(tempFact);
-			
-			// fault, called wrong method, used old writer method name
-			// this is a repeat of the same mistake I keep explaining to Ali
-			// typos, incorrect method calls
-			// I left him very clear instructions IN THE TOP OF HIS JAVA FILE
-			// We are going to look at my comments now to see how easy I'm making the mesh for him
-			myXMLWriter.writeToXml(tempFactList);
-			//myXMLWriter.factListWriteIterator(tempFactList);	
-			
+		if (((authorText == null) ||  (typeText == null) || quoteText == null) ){
+			out.println("<p>All Fact fields are empty. </p>");		
 		}else{
-			// else don't print line
-			out.println("<p></p>");
+			Fact tempFact = new Fact(authorText, typeText, quoteText);
+			errorCode = tempFact.validateFactData();
+			
+			if(errorCode == 0){
+				tempFact.toString();
+				// print line on the web page
+				out.println("<p>Fact data validated! </p>");
+				System.out.println("Fact created for XML writer.");
+				
+				// mesh point
+				// this is the actual pass of control to other class file
+				myXMLWriter.xmlReadThenWriteWrapper(tempFact);				
+			}else if(errorCode == 1){
+				out.println("<p>Fact data invalid. </p>");
+				out.println("<p>Author field must be filled out</p>");				
+			}else if(errorCode == 2){
+				out.println("<p>Fact data invalid. </p>");
+				out.println("<p>Quote field must be filled out</p>");				
+			}else if(errorCode == 3){
+				out.println("<p>Fact data invalid. </p>");
+				out.println("<p>Type must be Fact or Fallacy (case sensitive)</p>");
+			}			
+			
 		}
+			
+
+
+	
 	}
 	
-	private void printSearch(PrintWriter out, String searchText, String searchMode) {
-		if (searchText != null && !searchText.equals("")){  // Received a search request
-			int searchModeVal = FactSearchMode.ALL_VAL; // Default
-			if (searchMode != null && !searchMode.equals("")){  // If no parameter value, let it default.
-				if (searchMode.equals("text")){
-					searchModeVal = FactSearchMode.TEXT_VAL;
-				} else if (searchMode.equals("author")){
-					searchModeVal = FactSearchMode.AUTHOR_VAL;
-				} else if (searchMode.equals("type")){
-					searchModeVal = FactSearchMode.TYPE_VAL;
-				} 
-			}
-			FactList results = list.search(searchText, searchModeVal);
-			Fact temp;
-			if (results.getSize() == 0){
-				out.println("<p>Not Found! </p>");
-			}else{
-				out.println("<dl>");
-				for (int i = 0; i < results.getSize() ; i++){
-					temp = results.get(i);
-					out.println("<dt>" + temp.getText() + "</dt>");
-					out.println("<dd>&mdash;" + temp.getAuthor() + "</dd>");
-					out.println("<dd>&mdash;" + temp.getType() + "</dd>");
-				}
-				out.println("</dl>");
-			}
-			out.println("</td>");
-		}
-
-	}
-
-
-
-	private void printSearcheHistory(PrintWriter out, ArrayList<String> searchList, ArrayList<String> searchContextList) {
-		out.println("<td width=100>&nbsp;</td>");
-		out.println("<td style=\"text-align:center\">");
-		out.println("  <span style=\"font-weight:bold;font-size:120%\">Search History</span>");
-		out.println("  <table border=1 style=\"background-color:MistyRose \">");
-		out.println("    <tr>");
-		out.println("    <td style=\"text-align:center\">");
-		out.println("    <span style=\"font-weight:bold;font-size:110%\">Your Searches</span>");
-		out.println("    <td style=\"text-align:center\">");
-		out.println("    <span style=\"font-weight:bold;font-size:110%\">Other Searches</span>");
-		out.println("    <tr>");
-		out.println("    <td style=\"text-align:left\">");
-		out.println("    <ol>");
-		String searchTmp = "";
-
-		for (int i = 0; i < searchList.size(); i++){  // The ith search string
-			searchTmp = searchList.get(i);
-			out.println("      <li><a href=\"" + thisServlet + "?searchText=" + searchTmp + "&searchMode=both\" >"+searchTmp+"</a></li>");
-		}
-
-		out.println("    </ol>");
-		out.println("    <td style=\"text-align:left\">");
-		out.println("    <ol>");
-
-		for (int i = 0; i < searchContextList.size(); i++){  // The ith search string
-			searchTmp = searchContextList.get(i);
-			out.println("      <li><a href=\"" + thisServlet + "?searchText=" + searchTmp + "&searchMode=both\" >"+searchTmp+"</a></li>");
-		}
-
-		out.println("    </ol>");
-		out.println("  </tr></table>");
-		out.println("</td></tr></table>");
-
-	}
+//	private void printSearch(PrintWriter out, String searchText, String searchMode) {
+//		if (searchText != null && !searchText.equals("")){  // Received a search request
+//			int searchModeVal = FactSearchMode.ALL_VAL; // Default
+//			if (searchMode != null && !searchMode.equals("")){  // If no parameter value, let it default.
+//				if (searchMode.equals("text")){
+//					searchModeVal = FactSearchMode.TEXT_VAL;
+//				} else if (searchMode.equals("author")){
+//					searchModeVal = FactSearchMode.AUTHOR_VAL;
+//				} else if (searchMode.equals("type")){
+//					searchModeVal = FactSearchMode.TYPE_VAL;
+//				} 
+//			}
+//			FactList results = list.search(searchText, searchModeVal);
+//			Fact temp;
+//			if (results.getSize() == 0){
+//				out.println("<p>Not Found! </p>");
+//			}else{
+//				out.println("<dl>");
+//				for (int i = 0; i < results.getSize() ; i++){
+//					temp = results.get(i);
+//					out.println("<dt>" + temp.getText() + "</dt>");
+//					out.println("<dd>&mdash;" + temp.getAuthor() + "</dd>");
+//					out.println("<dd>&mdash;" + temp.getType() + "</dd>");
+//				}
+//				out.println("</dl>");
+//			}
+//			out.println("</td>");
+//		}
+//
+//	}
+//
+//
+//
+//	private void printSearcheHistory(PrintWriter out, ArrayList<String> searchList, ArrayList<String> searchContextList) {
+//		
+//
+////		out.println("<td width=100>&nbsp;</td>");
+////		out.println("<td style=\"text-align:center\">");
+////		out.println("  <span style=\"font-weight:bold;font-size:120%\">Search History</span>");
+////		out.println("  <table border=1 style=\"background-color:MistyRose \">");
+////		out.println("    <tr>");
+////		out.println("    <td style=\"text-align:center\">");
+////		out.println("    <span style=\"font-weight:bold;font-size:110%\">Your Searches</span>");
+////		out.println("    <td style=\"text-align:center\">");
+////		out.println("    <span style=\"font-weight:bold;font-size:110%\">Other Searches</span>");
+////		out.println("    <tr>");
+////		out.println("    <td style=\"text-align:left\">");
+////		out.println("    <ol>");
+////		String searchTmp = "";
+////
+////		for (int i = 0; i < searchList.size(); i++){  // The ith search string
+////			searchTmp = searchList.get(i);
+////			out.println("      <li><a href=\"" + thisServlet + "?searchText=" + searchTmp + "&searchMode=both\" >"+searchTmp+"</a></li>");
+////		}
+////
+////		out.println("    </ol>");
+////		out.println("    <td style=\"text-align:left\">");
+////		out.println("    <ol>");
+////
+////		for (int i = 0; i < searchContextList.size(); i++){  // The ith search string
+////			searchTmp = searchContextList.get(i);
+////			out.println("      <li><a href=\"" + thisServlet + "?searchText=" + searchTmp + "&searchMode=both\" >"+searchTmp+"</a></li>");
+////		}
+////
+////		out.println("    </ol>");
+////		out.println("  </tr></table>");
+////		out.println("</td></tr></table>");
+//
+//	}
 
 
 

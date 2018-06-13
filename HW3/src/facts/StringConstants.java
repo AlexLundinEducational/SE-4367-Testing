@@ -1,10 +1,16 @@
 package facts;
 
+//Alex Lundin
+//06-13-2018
+//SE-4367-Testing
+
+
 // this design pattern allows all necessary classes to implement the string constants interface
 // any class that implements StringConstants has access to the constant strings
 // this ensures modularity
 
 // Edit this file to allow project to build correctly with your workspace path
+
 
 public interface StringConstants {
 	
@@ -22,6 +28,6 @@ public interface StringConstants {
 	//private static final String xmlFile = "C:\\Users\\aml140830\\Desktop\\Java\\JavaEEWorkspace\\Test\\WebContent\\WEB-INF\\facts.xml";
 	
 	
-	// Java windows path for Webpage
+	// Java windows path for Web page
 	public static final String thisServlet = "http://localhost:8080/Test/";
 }
