@@ -4,9 +4,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+//these imports require install of 3rd party JRE's
 // document any third party installations for team members
 // TA's will need this information as well
-// these imports require install of 3rd party JRE's
 // http://www.jdom.org/downloads/index.html
 // JDOM 2.0.6
 
@@ -28,6 +28,8 @@ import org.jdom2.output.XMLOutputter;
 // the addFact method will send you a factList which contain raw data strings
 // the only thing addFact guarantees , is that you will not have to handle null fact objects
 // empty strings in any data field ARE allowed ""
+
+// I left these super crystal clear notes, and they were ignored.
 
 public class xmlWriterJDOM {
 	

@@ -250,6 +250,12 @@ public class FactServlet extends HttpServlet implements StringConstants {
 			System.out.println("Fact created for XML writer.");
 			FactList tempFactList = new FactList();
 			tempFactList.set(tempFact);
+			
+			// fault, called wrong method, used old writer method name
+			// this is a repeat of the same mistake I keep explaining to Ali
+			// typos, incorrect method calls
+			// I left him very clear instructions IN THE TOP OF HIS JAVA FILE
+			// We are going to look at my comments now to see how easy I'm making the mesh for him
 			myXMLWriter.writeToXml(tempFactList);
 
 			

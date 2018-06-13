@@ -42,3 +42,10 @@ Phase 3 Development
 		Tested and verified webpage still runs with Ali's new method		
 
 		https://autode.sk/2t3ii8g
+		
+	06-12-2018
+		Alex
+		We are Back to square one, Ali not building before posting
+		Incorrect method calls
+		I even left design notes inside his xmlWritterJDOM.java for how to mesh
+		https://autode.sk/2l7H5o0
