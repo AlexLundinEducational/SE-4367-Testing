@@ -38,3 +38,6 @@ Tomcat Link
 	https://tomcat.apache.org/download-70.cgi
 	Core
 		64-bit Windows zip (pgp, sha1, sha512)
+	
+	Java Kelpers
+	https://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/keplersr2	
