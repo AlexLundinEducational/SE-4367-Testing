@@ -1,0 +1,12 @@
+Phase 1 Development
+	06-27-2018
+		Alex Lundin
+			Source folder and documents setup
+Phase 2 Development
+
+Phase 3 Development
+
+Proof of Functional Build
+
+
+		

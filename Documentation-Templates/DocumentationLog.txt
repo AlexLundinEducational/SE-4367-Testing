@@ -1,10 +1,13 @@
 Documentation Log
 
-Refactors
+Reductions
 
+Refactors
+	servlet
+		string paths pulled up into a java file
 		
 Modifications
 
 Additions
+	stringconstants.java
 
-Reductions
