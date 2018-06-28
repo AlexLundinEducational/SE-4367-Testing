@@ -12,20 +12,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-// HW Subtraction
-// Removed three import statements that cause a bug
+// HW6 Modification, these imports cause an error
+//import quotes.Quote;
+//import quotes.QuoteList;
+//import quotes.QuoteSaxParser;
 
 /**
  * Servlet implementation class FactServlet
  */
 @WebServlet("/FactServlet")
 
-// HW Refactor
+// HW6 Refactor
 // added implementation (abstraction extension) of StringConstants class to keep all path variables in one file
 // for simple edits
 public class FactServlet extends HttpServlet implements StringConstants{
 
 
+	// HW6 Modification
+	// added this field so compiler does not complain
+	private static final long serialVersionUID = 1L;
+	
 	private FactList list;
 
 	@Override

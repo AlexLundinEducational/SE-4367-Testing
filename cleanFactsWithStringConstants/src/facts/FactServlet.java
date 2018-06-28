@@ -12,8 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-// HW Subtraction
-// Removed three import statements that cause a bug
+import quotes.Quote;
+import quotes.QuoteList;
+import quotes.QuoteSaxParser;
 
 /**
  * Servlet implementation class FactServlet
@@ -26,6 +27,9 @@ import javax.servlet.http.HttpSession;
 public class FactServlet extends HttpServlet implements StringConstants{
 
 
+	private static final String jsFile = "/Users/mehra/Documents/EEworkspace/Test/src/facts/facts.js";
+	private static final String xmlFile = "/Users/mehra/Documents/EEworkspace/Test/WebContent/WEB-INF/data/facts.xml";
+	private static final String thisServlet = "http://localhost:8080/Test/";
 	private FactList list;
 
 	@Override
