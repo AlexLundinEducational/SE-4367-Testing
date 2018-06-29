@@ -12,24 +12,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import quotes.Quote;
-import quotes.QuoteList;
-import quotes.QuoteSaxParser;
+// HW6 Modification, these imports cause an error
+//import quotes.Quote;
+//import quotes.QuoteList;
+//import quotes.QuoteSaxParser;
 
 /**
  * Servlet implementation class FactServlet
  */
 @WebServlet("/FactServlet")
 
-// HW Refactor
+// HW6 Refactor
 // added implementation (abstraction extension) of StringConstants class to keep all path variables in one file
 // for simple edits
 public class FactServlet extends HttpServlet implements StringConstants{
 
 
-	private static final String jsFile = "/Users/mehra/Documents/EEworkspace/Test/src/facts/facts.js";
-	private static final String xmlFile = "/Users/mehra/Documents/EEworkspace/Test/WebContent/WEB-INF/data/facts.xml";
-	private static final String thisServlet = "http://localhost:8080/Test/";
+	// HW6 Modification
+	// added this field so compiler does not complain
+	private static final long serialVersionUID = 1L;
+	
 	private FactList list;
 
 	@Override
