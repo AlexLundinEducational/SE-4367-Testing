@@ -6,10 +6,21 @@ Phase 1 Development
 		Alex Lundin
 			Double check files build correctly
 			https://autode.sk/2lFgjDx
+		Daniel Niel
+			Pulled github, tested files
+		Both
+			Brainstorm Base Choice
+			Reviewed slide material
 			
 Phase 2 Development
-
-
+	06-30-2018
+		Alex Lundin
+			Created IDM for Base choice
+			Documented all steps used to create model
+			Cited slide references
+			Documented reason for the Base Choice that will be used in the test setup
+			
+			
 Phase 3 Development
 
 
