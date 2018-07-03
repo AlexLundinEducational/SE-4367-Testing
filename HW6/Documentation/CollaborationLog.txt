@@ -20,6 +20,12 @@ Phase 2 Development
 			Cited slide references
 			Documented reason for the Base Choice that will be used in the test setup
 			
+	07-02-2018
+		Daniel
+			Created test set for Fact
+	07-03-2018
+		Alex	
+			Created test set for Search Mode
 			
 Phase 3 Development
 
