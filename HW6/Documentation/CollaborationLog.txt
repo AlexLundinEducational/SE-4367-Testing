@@ -28,7 +28,8 @@ Phase 2 Development
 			Created test set for Search Mode
 			
 Phase 3 Development
-
+	07-03-2018
+		Alex created simple test template
 
 Proof of Functional Build
 
