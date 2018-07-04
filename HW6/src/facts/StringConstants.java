@@ -18,7 +18,7 @@ public interface StringConstants {
 	public static final String jsFile = "C:\\Users\\Alex\\Desktop\\Screen-Cleaner\\Programs\\JavaEEWorkspace\\Test\\src\\facts\\facts.js";
 	public static final String xmlFile = "C:\\Users\\Alex\\Desktop\\Screen-Cleaner\\Programs\\JavaEEWorkspace\\Test\\WebContent\\WEB-INF\\facts.xml";
 	public static final String chromeExecutable = "C:\\Users\\Alex\\Desktop\\Screen-Cleaner\\Programs\\Executable-library\\chromedriver.exe";
-	
+
 	// Java windows paths for Alex's machine #2
 //	public static final String jsFile = "C:\\Users\\kim\\Desktop\\Screen-Cleaner\\Programs\\JavaEEWorkspace\\Test\\src\\facts\\facts.js";
 //	public static final String xmlFile = "C:\\Users\\kim\\Desktop\\Screen-Cleaner\\Programs\\JavaEEWorkspace\\Test\\WebContent\\WEB-INF\\facts.xml";
