@@ -1,8 +1,13 @@
 Phase 1 Development
-
+	07-10-2018
+		Alex Lundin
+			documentation templates started
 			
 Phase 2 Development
-
+	07-11-2018
+		Alex Lundin	
+			Drew graph
+			Answered most of question 1
 			
 Phase 3 Development
 
